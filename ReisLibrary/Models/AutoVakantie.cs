@@ -9,17 +9,7 @@ namespace ReisLibrary.Models
     public class AutoVakantie : Reis
     {
         private const double _extraPrijsHuurAuto = 10;
-        private bool _eigenWagen;
-        public bool EigenWagen { get; private set; }
-        public AutoVakantie(DateTime vertrekDatum, DateTime terugkeerDatum, int aantalPersonen, bool eigenWagen)
-            : base(vertrekDatum, terugkeerDatum, aantalPersonen)
-        {
-            this.VertrekDatum = vertrekDatum;
-            this.TerugKeerDatum = terugkeerDatum;
-            this.AantalPersonen = aantalPersonen;
-            this.EigenWagen = true;
-
-        }
+        public bool EigenWagen { get; set; }
         public override double BerekenPrijs()
         {
             if (EigenWagen)
@@ -34,6 +24,13 @@ namespace ReisLibrary.Models
             {
                 return base.BerekenPrijs() + AantalDagen * _extraPrijsHuurAuto;
             }
+        }
+        public AutoVakantie(DateTime vertrekDatum, DateTime terugkeerDatum, int aantalPersonen)
+            : base(vertrekDatum, terugkeerDatum, aantalPersonen)
+        {
+            this.VertrekDatum = vertrekDatum;
+            this.TerugKeerDatum = terugkeerDatum;
+            this.AantalPersonen = aantalPersonen;
         }
     }
 }

@@ -12,20 +12,20 @@ namespace ReisLibrary.Models
         public string Boodschap { get; private set; }
         private int GenereerID()
         {
-            int hoogsteID = 0;
-            foreach (LogMessage message in LoggerService.Logs)
+            if (LoggerService.Logs.Count() == 0)
             {
-                if (hoogsteID <= message.ID)
-                {
-                    hoogsteID = message.ID;
-                }
+                return ID = 0;
             }
-                return (hoogsteID + 1);
+            else
+            {
+                return ID = LoggerService.Logs.Count() + ID;
+            }
         }
         public LogMessage(string boodschap)
         {
             ID = GenereerID();
             Boodschap = boodschap;
         }
+        
     }
 }

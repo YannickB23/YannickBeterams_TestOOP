@@ -21,7 +21,7 @@ namespace ReisLibrary.Models
                 return base.BerekenPrijs() + (_cruisePrijsExtra * AantalPersonen);
             }
         }
-        public Cruise(DateTime vertrekDatum, DateTime terugkeerDatum, int aantalPersonen, bool vip)
+        public Cruise(DateTime vertrekDatum, DateTime terugkeerDatum, int aantalPersonen, bool vip = true)
             :base(vertrekDatum, terugkeerDatum, aantalPersonen)
         {
             this.VertrekDatum = vertrekDatum;

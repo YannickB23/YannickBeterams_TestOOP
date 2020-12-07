@@ -12,15 +12,15 @@ namespace ReisLibrary.Models
         public Reisbureau Reisbureau { get; set; }
         public Persoon Persoon { get; set; }
         public Reis Reis { get; set; }
-        public LogMessage LogMessage { get; }
 
         public ReisReservatie(Reis reis, Reisbureau reisbureau, Persoon persoon)
         {
             Reis = reis;
             Reisbureau = reisbureau;
             Persoon = persoon;
+            LoggerService.AddLogMessage(LogMessage());
         }
-        LogMessage ILoggable.LogMessage()
+        public LogMessage LogMessage()
         {
             return new LogMessage($"{Reisbureau} {Reis} {Persoon}");
         }

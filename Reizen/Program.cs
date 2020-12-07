@@ -19,15 +19,28 @@ namespace Reizen
             CreatePersonen();
             CreateReizen();
             CreateReservaties();
-            Console.WriteLine($"{personen[1]}\n{reisbureaus[0]}");
-            Console.WriteLine("Prijs van de reis = " + reisreservaties[2].Reis.BerekenPrijs() + " EUR"); ;
+            //CreatLogs();
+            foreach (ReisReservatie reservatie in reisreservaties)
+            {
+                Console.WriteLine($"{reservatie.Persoon.Naam}\n{reservatie.Reisbureau.Naam}{reservatie.Reisbureau.Adres}");
+                Console.WriteLine("Prijs van de reis = " + reservatie.Reis.BerekenPrijs() + " EUR\n");
+            }
             Console.ReadLine();
         }
+
+        //private static void CreatLogs()
+        //{
+        //    foreach (LogMessage message in LoggerService.Logs)
+        //    {
+        //        Console.WriteLine($"Log {message.ID}\n/*{message.Boodschap}*/");
+        //    }
+        //}
+
         private static void CreateReizen()
         {
             reizen[0] = new Cruise(new DateTime(13 / 04 / 2021), new DateTime(23 / 04 / 2021), 2, false);
-            reizen[1] = new VliegtuigVakantie(new DateTime(09 / 01 / 2021), new DateTime(02 / 02 / 2021), 2, 120);
-            reizen[2] = new AutoVakantie(new DateTime(03 / 02 / 2021), new DateTime(18 / 02 / 2021), 4, false);
+            reizen[1] = new VliegtuigVakantie(new DateTime(09 / 01 / 2021), new DateTime(02 / 02 / 2021), 2);
+            reizen[2] = new AutoVakantie(new DateTime(03 / 02 / 2021), new DateTime(18 / 02 / 2021), 4);
         }
         static void CreateReisbureaus()
         {
